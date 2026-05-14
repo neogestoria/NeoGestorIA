@@ -397,7 +397,7 @@
     }
 
     /* =========================================================
-       Servicios y beneficios
+       Servicios, beneficios y planes
        ========================================================= */
 
     .cards-grid {
@@ -492,72 +492,8 @@
       font-size: 0.95rem;
     }
 
-    /* =========================================================
-       Tabla de precios
-       ========================================================= */
-
-    .pricing-table-wrapper {
-      overflow-x: auto;
-      background: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .pricing-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 760px;
-    }
-
-    .pricing-table th,
-    .pricing-table td {
-      padding: 22px;
-      text-align: left;
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .pricing-table th {
-      color: var(--color-primary);
-      background: #f8fafc;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .pricing-table tr:last-child td {
-      border-bottom: 0;
-    }
-
-    .plan-name {
-      display: inline-block;
-      font-weight: 800;
-      color: var(--color-primary);
-      font-size: 1.08rem;
-      margin-right: 8px;
-    }
-
-    .price {
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: var(--color-primary);
-      letter-spacing: -0.04em;
-    }
-
-    .price span {
-      font-size: 0.9rem;
-      color: var(--color-muted);
-      font-weight: 500;
-    }
-
-    .tag {
-      display: inline-flex;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--color-accent-soft);
-      color: var(--color-accent);
-      font-weight: 800;
-      font-size: 0.8rem;
+    .plans-cta {
+      margin-top: 34px;
     }
 
     /* =========================================================
@@ -940,10 +876,6 @@
       .hero h1 {
         font-size: 3rem;
       }
-
-      .pricing-table {
-        min-width: 720px;
-      }
     }
   </style>
 </head>
@@ -964,7 +896,7 @@
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#beneficios">Gestión digital</a></li>
-          <li><a href="#precios">Precios</a></li>
+          <li><a href="#planes">Planes</a></li>
           <li><a href="#contacto">Contacto</a></li>
           <li><a href="#clientes" class="nav-cta">Acceso Clientes</a></li>
         </ul>
@@ -1024,7 +956,7 @@
             <div class="preview-grid">
               <div class="preview-card">
                 <div class="preview-label">Ingresos</div>
-                <div class="preview-value">24.860€</div>
+                <div class="preview-value">Control</div>
               </div>
 
               <div class="preview-card">
@@ -1034,7 +966,7 @@
 
               <div class="preview-card large">
                 <div class="preview-label">Estado documental</div>
-                <div class="preview-value">78%</div>
+                <div class="preview-value">Activo</div>
                 <div class="progress-bar" aria-hidden="true">
                   <span></span>
                 </div>
@@ -1137,66 +1069,52 @@
     </section>
 
     <!-- =========================================================
-         Tabla de precios
+         Planes
          ========================================================= -->
-    <section class="section" id="precios">
+    <section class="section" id="planes">
       <div class="container">
         <span class="badge">Planes</span>
 
-        <h2 class="section-title">Precios claros según el momento de tu negocio</h2>
+        <h2 class="section-title">Planes adaptados a cada tipo de negocio</h2>
 
         <p class="section-subtitle">
-          Planes orientativos para mostrar la estructura comercial. Puedes modificar
-          los importes directamente en el HTML.
+          En NGIA trabajamos con planes personalizados según el volumen, la actividad
+          y las necesidades reales de cada autónomo, PYME o empresa.
         </p>
 
-        <div class="pricing-table-wrapper">
-          <table class="pricing-table">
-            <thead>
-              <tr>
-                <th>Plan</th>
-                <th>Ideal para</th>
-                <th>Incluye</th>
-                <th>Precio</th>
-              </tr>
-            </thead>
+        <div class="cards-grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🌱</div>
+            <h3>Plan Esencial</h3>
+            <p>
+              Pensado para autónomos y pequeños negocios que necesitan una gestión
+              contable y fiscal clara, sencilla y bien organizada.
+            </p>
+          </article>
 
-            <tbody>
-              <tr>
-                <td>
-                  <span class="plan-name">Esencial</span>
-                </td>
-                <td>Autónomos y negocios pequeños</td>
-                <td>Contabilidad básica, impuestos trimestrales y soporte digital</td>
-                <td>
-                  <span class="price">Desde 79€ <span>/ mes</span></span>
-                </td>
-              </tr>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🚀</div>
+            <h3>Plan Profesional</h3>
+            <p>
+              Diseñado para negocios con mayor volumen de actividad que necesitan
+              seguimiento periódico, control documental y soporte más completo.
+            </p>
+          </article>
 
-              <tr>
-                <td>
-                  <span class="plan-name">Profesional</span>
-                  <span class="tag">Popular</span>
-                </td>
-                <td>PYMES con mayor volumen</td>
-                <td>Gestión contable completa, panel privado y revisión mensual</td>
-                <td>
-                  <span class="price">Desde 149€ <span>/ mes</span></span>
-                </td>
-              </tr>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🏢</div>
+            <h3>Plan Empresa</h3>
+            <p>
+              Orientado a empresas que buscan una gestión más avanzada, asesoramiento
+              financiero y acompañamiento estratégico en la toma de decisiones.
+            </p>
+          </article>
+        </div>
 
-              <tr>
-                <td>
-                  <span class="plan-name">Premium</span>
-                </td>
-                <td>Empresas que necesitan control avanzado</td>
-                <td>Asesoría financiera, reporting, reuniones y planificación fiscal</td>
-                <td>
-                  <span class="price">A medida</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="plans-cta">
+          <a href="#contacto" class="btn btn-primary">
+            Solicitar plan personalizado
+          </a>
         </div>
       </div>
     </section>
@@ -1265,7 +1183,7 @@
             <div class="workspace-grid locked-preview" id="workspaceContent">
               <article class="workspace-card">
                 <small>Resumen mensual</small>
-                <strong>Mayo 2026</strong>
+                <strong>Gestión activa</strong>
                 <p>Ingresos, gastos, impuestos estimados y documentos pendientes.</p>
               </article>
 
@@ -1281,12 +1199,12 @@
 
                 <div class="task-list">
                   <div class="task">
-                    <span>Subir facturas recibidas del mes</span>
+                    <span>Subir facturas recibidas del periodo</span>
                     <span class="task-status">Pendiente</span>
                   </div>
 
                   <div class="task">
-                    <span>Revisar resumen de IVA</span>
+                    <span>Revisar resumen fiscal</span>
                     <span class="task-status">En revisión</span>
                   </div>
 
@@ -1300,7 +1218,7 @@
               <article class="workspace-card">
                 <small>Documentos</small>
                 <strong>Carpeta compartida</strong>
-                <p>Contratos, facturas, modelos fiscales y reportes mensuales.</p>
+                <p>Contratos, facturas, modelos fiscales y reportes de gestión.</p>
               </article>
 
               <article class="workspace-card">
@@ -1350,7 +1268,7 @@
               <span class="step-number">3</span>
               <div>
                 <h3>Gestión continua</h3>
-                <p>Te acompañamos cada mes con control contable, fiscal y financiero.</p>
+                <p>Te acompañamos con control contable, fiscal y financiero.</p>
               </div>
             </div>
           </div>
@@ -1376,6 +1294,7 @@
             id="contactSuccess"
             hidden
           >
+            Consulta enviada correctamente. Gracias por contactar con NGIA.
           </div>
 
           <div
@@ -1444,7 +1363,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <p><strong>NGIA</strong> · Gestión digital y consultoría contable</p>
-      <p>© 2026 NGIA. Todos los derechos reservados.</p>
+      <p>© NGIA. Todos los derechos reservados.</p>
     </div>
   </footer>
 
