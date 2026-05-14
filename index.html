@@ -1301,7 +1301,7 @@
     </section>
 
     <!-- =========================================================
-         Cómo trabajamos + Formulario de contacto con Formspree
+         Cómo trabajamos + Formulario de contacto con Web3Forms
          ========================================================= -->
     <section class="section work-contact" id="contacto">
       <div class="container contact-layout">
@@ -1343,10 +1343,10 @@
         </div>
 
         <!--
-          FORMULARIO CONECTADO A FORMSPREE
+          FORMULARIO CONECTADO A WEB3FORMS
 
           Endpoint real:
-          https://formspree.io/f/xbdwebgk
+          https://api.web3forms.com/submit
 
           Este formulario usa JavaScript con fetch para enviar los datos
           y mostrar mensaje de éxito/error sin salir de la página.
@@ -1354,7 +1354,7 @@
         <form
           class="contact-form"
           id="contactForm"
-          action="https://formspree.io/f/xbdwebgk"
+          action="https://api.web3forms.com/submit"
           method="POST"
         >
           <div
@@ -1375,8 +1375,29 @@
 
           <input
             type="hidden"
-            name="_subject"
+            name="access_key"
+            value="ae72789b-810e-44ed-9c27-fb407a9af580"
+          >
+
+          <input
+            type="hidden"
+            name="subject"
             value="Nueva consulta desde la web de NGIA"
+          >
+
+          <input
+            type="hidden"
+            name="from_name"
+            value="Web NGIA"
+          >
+
+          <!-- Campo anti-spam invisible para bots -->
+          <input
+            type="checkbox"
+            name="botcheck"
+            style="display: none;"
+            tabindex="-1"
+            autocomplete="off"
           >
 
           <div class="form-group">
@@ -1418,6 +1439,7 @@
           </button>
 
           <p class="form-small-note">
+            Al enviar el formulario, tu consulta se remitirá directamente a NGIA mediante Web3Forms.
           </p>
         </form>
       </div>
@@ -1441,7 +1463,7 @@
        Incluye:
        - Simulación de acceso de clientes
        - Desbloqueo visual del panel privado
-       - Envío real del formulario a Formspree
+       - Envío real del formulario a Web3Forms
        ========================================================= */
 
     /* =========================
@@ -1641,7 +1663,7 @@
     });
 
     /* =========================
-       Formulario de contacto con Formspree
+       Formulario de contacto con Web3Forms
        ========================= */
 
     const contactForm = document.getElementById("contactForm");
@@ -1669,7 +1691,9 @@
           }
         });
 
-        if (response.ok) {
+        const result = await response.json();
+
+        if (response.ok && result.success) {
           contactSuccess.hidden = false;
           contactForm.reset();
         } else {
