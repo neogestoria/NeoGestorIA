@@ -695,6 +695,101 @@
       font-size: 0.86rem;
     }
 
+
+    .client-name-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--color-accent-soft);
+      color: var(--color-accent);
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+
+    .private-intro {
+      position: relative;
+      background: #fbfdff;
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .private-intro.full,
+    .quick-actions.full {
+      grid-column: 1 / -1;
+    }
+
+    .private-intro strong {
+      display: block;
+      color: var(--color-primary);
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+      letter-spacing: -0.03em;
+    }
+
+    .private-intro p {
+      color: var(--color-muted);
+      font-size: 0.95rem;
+    }
+
+    .quick-actions {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .quick-action {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid var(--color-border);
+      border-radius: 18px;
+      background: #fbfdff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+    }
+
+    .quick-action:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+      border-color: rgba(37, 99, 235, 0.35);
+    }
+
+    .quick-action-icon {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--color-accent-soft);
+      color: var(--color-accent);
+      font-size: 1.2rem;
+    }
+
+    .quick-action strong {
+      display: block;
+      color: var(--color-primary);
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .quick-action span {
+      display: block;
+      color: var(--color-muted);
+      font-size: 0.9rem;
+    }
+
+    .private-empty {
+      color: var(--color-muted);
+      font-size: 0.94rem;
+    }
+
     /* =========================================================
        Cómo trabajamos / Contacto
        ========================================================= */
@@ -861,7 +956,8 @@
       }
 
       .preview-grid,
-      .workspace-grid {
+      .workspace-grid,
+      .quick-actions {
         grid-template-columns: 1fr;
       }
 
@@ -1164,15 +1260,15 @@
             </form>
 
             <p class="access-note">
-              Clave demo: <strong>NGIA2026</strong>. Cámbiala en el script antes de publicar.
+              Introduce la clave privada facilitada por NGIA para acceder a tus enlaces personalizados.
             </p>
           </div>
 
           <div class="private-panel" id="privatePanel">
             <div class="private-header">
               <div>
-                <h3>Workspace NGIA</h3>
-                <p>Panel privado de seguimiento contable y documental.</p>
+                <h3>Área Privada NGIA</h3>
+                <p id="privatePanelSubtitle">Introduce tu clave para ver tus accesos personalizados.</p>
               </div>
 
               <button type="button" class="btn btn-secondary" id="logoutButton" hidden>
@@ -1181,50 +1277,22 @@
             </div>
 
             <div class="workspace-grid locked-preview" id="workspaceContent">
-              <article class="workspace-card">
-                <small>Resumen mensual</small>
-                <strong>Gestión activa</strong>
-                <p>Ingresos, gastos, impuestos estimados y documentos pendientes.</p>
-              </article>
-
-              <article class="workspace-card">
-                <small>Estado fiscal</small>
-                <strong>Declaraciones al día</strong>
-                <p>Próxima revisión programada antes del cierre trimestral.</p>
-              </article>
-
               <article class="workspace-card full">
-                <small>Tareas pendientes</small>
-                <strong>Seguimiento documental</strong>
-
-                <div class="task-list">
-                  <div class="task">
-                    <span>Subir facturas recibidas del periodo</span>
-                    <span class="task-status">Pendiente</span>
-                  </div>
-
-                  <div class="task">
-                    <span>Revisar resumen fiscal</span>
-                    <span class="task-status">En revisión</span>
-                  </div>
-
-                  <div class="task">
-                    <span>Confirmar datos bancarios</span>
-                    <span class="task-status">Completado</span>
-                  </div>
-                </div>
+                <small>Zona privada</small>
+                <strong>Panel bloqueado</strong>
+                <p>Introduce tu clave de cliente para acceder a tu carpeta, formulario y herramientas de gestión.</p>
               </article>
 
               <article class="workspace-card">
-                <small>Documentos</small>
-                <strong>Carpeta compartida</strong>
-                <p>Contratos, facturas, modelos fiscales y reportes de gestión.</p>
+                <small>Documentación</small>
+                <strong>Drive privado</strong>
+                <p>Acceso a la carpeta compartida entre el cliente y NGIA.</p>
               </article>
 
               <article class="workspace-card">
-                <small>Comunicación</small>
-                <strong>Consultas abiertas</strong>
-                <p>Espacio para resolver dudas con el equipo de NGIA.</p>
+                <small>Registro</small>
+                <strong>Formulario personalizado</strong>
+                <p>Alta de facturas, tickets, justificantes y documentos.</p>
               </article>
             </div>
           </div>
@@ -1381,55 +1449,190 @@
        Acceso Clientes
        ========================= */
 
-    // Cambia esta clave por la que quieras entregar a tus clientes.
-    // Importante: en una web estática esto NO es seguridad real.
-    // Es solo una simulación visual.
-    const ACCESS_KEY = "NGIA2026";
+    /*
+      Clientes configurados para el área privada.
+
+      IMPORTANTE:
+      Esto es una simulación para una web estática.
+      Las claves y enlaces pueden verse si alguien inspecciona el código fuente.
+      La seguridad real debe estar en los permisos de Google Drive, Forms y Sheets.
+    */
+    const CLIENTS = {
+      "SD2DS4EPZ@x": {
+        name: "Cliente-DEMO",
+        driveUrl: "https://drive.google.com/drive/folders/1ejCMC1smzWQxqzxT_p8wixykbWtq2kwX?usp=drive_link",
+        formUrl: "https://forms.gle/YLhbS4TZtkcEx5PZA",
+        sheetUrl: "",
+        notes: "Accede a tu carpeta privada y registra cada factura, ticket o documento desde tu formulario personalizado."
+      }
+
+      /*
+        Para añadir otro cliente, copia este bloque, pon una coma después del cliente anterior
+        y cambia la clave, nombre y enlaces:
+
+        ,"CLAVE-DEL-CLIENTE": {
+          name: "Nombre del cliente",
+          driveUrl: "ENLACE_DRIVE",
+          formUrl: "ENLACE_FORM",
+          sheetUrl: "",
+          notes: "Texto breve para este cliente."
+        }
+      */
+    };
 
     const clientLoginForm = document.getElementById("clientLoginForm");
     const clientPassword = document.getElementById("clientPassword");
     const loginMessage = document.getElementById("loginMessage");
     const workspaceContent = document.getElementById("workspaceContent");
     const logoutButton = document.getElementById("logoutButton");
+    const privatePanelSubtitle = document.getElementById("privatePanelSubtitle");
 
-    function unlockClientArea() {
+    function renderClientArea(client) {
+      workspaceContent.innerHTML = `
+        <div class="private-intro full">
+          <span class="client-name-pill">Cliente activo</span>
+          <strong>Bienvenido/a, ${client.name}</strong>
+          <p>${client.notes}</p>
+        </div>
+
+        <div class="quick-actions full">
+          <a class="quick-action" href="${client.driveUrl}" target="_blank" rel="noopener noreferrer">
+            <span class="quick-action-icon">📁</span>
+            <span>
+              <strong>Abrir carpeta Drive</strong>
+              <span>Sube facturas, tickets, bancos y documentación.</span>
+            </span>
+          </a>
+
+          <a class="quick-action" href="${client.formUrl}" target="_blank" rel="noopener noreferrer">
+            <span class="quick-action-icon">📝</span>
+            <span>
+              <strong>Registrar documento</strong>
+              <span>Rellena el formulario personalizado del cliente.</span>
+            </span>
+          </a>
+
+          ${
+            client.sheetUrl
+              ? `<a class="quick-action" href="${client.sheetUrl}" target="_blank" rel="noopener noreferrer">
+                  <span class="quick-action-icon">📊</span>
+                  <span>
+                    <strong>Ver estado de gestión</strong>
+                    <span>Consulta el resumen o seguimiento compartido.</span>
+                  </span>
+                </a>`
+              : `<div class="quick-action">
+                  <span class="quick-action-icon">📊</span>
+                  <span>
+                    <strong>Estado de gestión</strong>
+                    <span class="private-empty">Disponible próximamente.</span>
+                  </span>
+                </div>`
+          }
+
+          <a class="quick-action" href="#contacto">
+            <span class="quick-action-icon">💬</span>
+            <span>
+              <strong>Contactar con NGIA</strong>
+              <span>Envía una consulta desde el formulario de contacto.</span>
+            </span>
+          </a>
+        </div>
+
+        <article class="workspace-card full">
+          <small>Cómo usar tu área privada</small>
+          <strong>Flujo recomendado</strong>
+
+          <div class="task-list">
+            <div class="task">
+              <span>Sube primero el archivo a tu carpeta privada de Drive.</span>
+              <span class="task-status">Paso inicial</span>
+            </div>
+
+            <div class="task">
+              <span>Después registra los datos del documento en el formulario.</span>
+              <span class="task-status">Registro</span>
+            </div>
+
+            <div class="task">
+              <span>NGIA revisará la documentación recibida.</span>
+              <span class="task-status">Revisión</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderLockedArea() {
+      workspaceContent.innerHTML = `
+        <article class="workspace-card full">
+          <small>Zona privada</small>
+          <strong>Panel bloqueado</strong>
+          <p>Introduce tu clave de cliente para acceder a tu carpeta, formulario y herramientas de gestión.</p>
+        </article>
+
+        <article class="workspace-card">
+          <small>Documentación</small>
+          <strong>Drive privado</strong>
+          <p>Acceso a la carpeta compartida entre el cliente y NGIA.</p>
+        </article>
+
+        <article class="workspace-card">
+          <small>Registro</small>
+          <strong>Formulario personalizado</strong>
+          <p>Alta de facturas, tickets, justificantes y documentos.</p>
+        </article>
+      `;
+    }
+
+    function unlockClientArea(client, accessKey) {
+      renderClientArea(client);
+
       workspaceContent.classList.remove("locked-preview");
       logoutButton.hidden = false;
+      privatePanelSubtitle.textContent = `Panel privado de ${client.name}.`;
 
       loginMessage.textContent = "Acceso concedido. Panel desbloqueado.";
       loginMessage.className = "form-message success";
 
-      localStorage.setItem("ngia_client_access", "unlocked");
+      localStorage.setItem("ngia_client_access_key", accessKey);
     }
 
     function lockClientArea() {
+      renderLockedArea();
+
       workspaceContent.classList.add("locked-preview");
       logoutButton.hidden = true;
+      privatePanelSubtitle.textContent = "Introduce tu clave para ver tus accesos personalizados.";
 
       clientPassword.value = "";
       loginMessage.textContent = "";
       loginMessage.className = "form-message";
 
-      localStorage.removeItem("ngia_client_access");
+      localStorage.removeItem("ngia_client_access_key");
     }
 
-    // Mantiene el panel desbloqueado si el usuario ya accedió en este navegador.
-    if (localStorage.getItem("ngia_client_access") === "unlocked") {
-      unlockClientArea();
+    const savedAccessKey = localStorage.getItem("ngia_client_access_key");
+
+    if (savedAccessKey && CLIENTS[savedAccessKey]) {
+      unlockClientArea(CLIENTS[savedAccessKey], savedAccessKey);
     }
 
     clientLoginForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
       const enteredPassword = clientPassword.value.trim();
+      const client = CLIENTS[enteredPassword];
 
-      if (enteredPassword === ACCESS_KEY) {
-        unlockClientArea();
+      if (client) {
+        unlockClientArea(client, enteredPassword);
       } else {
+        renderLockedArea();
         workspaceContent.classList.add("locked-preview");
         logoutButton.hidden = true;
+        privatePanelSubtitle.textContent = "Introduce tu clave para ver tus accesos personalizados.";
 
-        loginMessage.textContent = "Clave incorrecta. Inténtalo de nuevo.";
+        loginMessage.textContent = "Clave incorrecta. Revisa la clave facilitada por NGIA.";
         loginMessage.className = "form-message error";
       }
     });
